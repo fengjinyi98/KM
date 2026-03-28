@@ -1,0 +1,14 @@
+[project]
+name = "km-memory"
+version = "0.1.0"
+description = "本地 Markdown + SQLite 的 KM 系统"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=9.0",
+]
