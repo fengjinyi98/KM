@@ -87,6 +87,23 @@ def _render_project_markdown(*, project_name: str, text: str) -> str:
     return dumps_markdown(metadata, body)
 
 
+# 生成个人画像主档案内容，第一版先记录当前偏好与工作方式摘要。
+def _render_profile_markdown(*, text: str) -> str:
+    """渲染个人画像主档案 Markdown。"""
+    metadata = {
+        "doc_type": "profile",
+        "title": "me",
+        "summary": text[:80],
+        "tags": [],
+    }
+    body = (
+        "# me\n\n"
+        f"## 当前画像\n{text}\n\n"
+        "## 后续补充\n- 待补充长期偏好、项目版图与工作方式。"
+    )
+    return dumps_markdown(metadata, body)
+
+
 # 为项目或画像生成变更日志，保留历史演化轨迹。
 def _render_log_markdown(*, title: str, text: str, doc_type: str) -> str:
     """渲染变更日志 Markdown。"""
@@ -138,6 +155,16 @@ def capture_note(root: Path, text: str) -> CaptureResult:
             log_path,
             _render_log_markdown(title=f"项目 {project_name} 变更", text=text, doc_type=doc_type),
         )
+    elif doc_type == "profile":
+        markdown = _render_profile_markdown(text=text)
+        path = write_markdown_to_path(root / "memory" / "profile" / "me.md", markdown)
+        timestamp = datetime.now(UTC).strftime("%Y%m%d%H%M%S%f")
+        log_path = root / "memory" / "logs" / f"profile-me-{timestamp}.md"
+        write_markdown_to_path(
+            log_path,
+            _render_log_markdown(title="个人画像变更", text=text, doc_type=doc_type),
+        )
+        is_inbox = False
     else:
         title = _infer_title(text, doc_type)
         markdown = _render_inbox_markdown(title=title, text=text)

@@ -43,3 +43,16 @@ def test_capture_project_updates_profile_and_log(tmp_path: Path) -> None:
     assert second.path == project_file
     assert project_file.exists()
     assert log_files
+
+
+# 这里验证个人画像更新会写入正式 profile 主档案，而不是回退到 inbox。
+def test_capture_profile_updates_profile_archive(tmp_path: Path) -> None:
+    """验证个人画像输入会更新正式 profile 条目。"""
+    result = capture_note(root=tmp_path, text="更新我的个人画像：我偏好简洁、渐进披露、Markdown 优先。")
+
+    profile_file = tmp_path / "memory" / "profile" / "me.md"
+
+    assert result.doc_type == "profile"
+    assert result.is_inbox is False
+    assert result.path == profile_file
+    assert profile_file.exists()
