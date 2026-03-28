@@ -1,0 +1,20 @@
+{
+  "name": "km-local",
+  "interface": {
+    "displayName": "KM Local Plugins"
+  },
+  "plugins": [
+    {
+      "name": "km-memory",
+      "source": {
+        "source": "local",
+        "path": "./plugins/km-memory"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

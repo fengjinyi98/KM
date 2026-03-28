@@ -1,0 +1,42 @@
+{
+  "name": "km-memory",
+  "version": "0.1.0",
+  "description": "Capture, update and recall local KM markdown knowledge and memory.",
+  "author": {
+    "name": "fengjinyi",
+    "email": "",
+    "url": ""
+  },
+  "homepage": "",
+  "repository": "",
+  "license": "MIT",
+  "keywords": [
+    "knowledge",
+    "memory",
+    "markdown",
+    "sqlite",
+    "km"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "KM Memory",
+    "shortDescription": "本地 KM 的显式写入、更新与召回入口",
+    "longDescription": "把技术案例、项目记忆和个人画像写入本地 Markdown，并通过 SQLite 混合检索按需召回。默认不主动注入上下文，只在用户明确要求时执行。",
+    "developerName": "fengjinyi",
+    "category": "Productivity",
+    "capabilities": [
+      "Write",
+      "Search",
+      "Memory"
+    ],
+    "websiteURL": "",
+    "privacyPolicyURL": "",
+    "termsOfServiceURL": "",
+    "defaultPrompt": [
+      "把这个案例写进我们的 KM。",
+      "更新我们的项目记忆。",
+      "去 KM 里查一下有没有类似案例。"
+    ],
+    "brandColor": "#2563EB"
+  }
+}
