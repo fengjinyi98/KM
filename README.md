@@ -113,6 +113,41 @@ KM/
 - 只有用户明确要求时才访问 KM
 - 检索时优先返回摘要，而不是直接输出全文
 
+
+## 集成同步
+
+当你更新了仓库中的集成源文件后，可以用下面这条命令把它们同步到全局安装位置：
+
+```bash
+. .venv/bin/activate
+python scripts/sync_km_integrations.py
+```
+
+只检查、不写入：
+
+```bash
+. .venv/bin/activate
+python scripts/sync_km_integrations.py --check
+```
+
+只同步 Codex：
+
+```bash
+. .venv/bin/activate
+python scripts/sync_km_integrations.py --codex-only
+```
+
+只同步 Claude：
+
+```bash
+. .venv/bin/activate
+python scripts/sync_km_integrations.py --claude-only
+```
+
+当前仓库中的两个集成源位置为：
+- Codex：`/Users/fengjinyi/Desktop/KM/plugins/km-memory`
+- Claude：`/Users/fengjinyi/Desktop/KM/claude-skills/km-memory/SKILL.md`
+
 ## 测试
 
 ```bash
