@@ -31,3 +31,7 @@ def bootstrap_layout(root: Path) -> None:
         # 将分段路径拼接到根目录下，确保每层目录都可自动创建。
         directory = root.joinpath(*parts)
         directory.mkdir(parents=True, exist_ok=True)
+
+
+# 定义索引数据库的相对路径，供后续 capture / recall 统一复用。
+DEFAULT_INDEX_DB_RELATIVE_PATH: tuple[str, ...] = ("index", "km.db")
